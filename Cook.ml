@@ -34,6 +34,8 @@ let rec cook_term env { S.place; S.value } =
       T.BinOp (cook_term env t1, op, cook_term env t2)
   | S.Print t ->
       T.Print (cook_term env t)
+  | S.Ifzero (tif, tthen, telse) ->
+      T.Ifzero(cook_term env tif, cook_term env tthen, cook_term env telse)
   | S.Let (S.NonRecursive, x, t1, t2) ->
       let t1 = cook_term env t1 in
       let env, x = bind env x in

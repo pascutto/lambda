@@ -71,6 +71,7 @@ and term =
   | Exit
   | TailCall of value * value list
   | Print of value * term
+  | Ifzero of value * term * term
   | LetVal of variable * value * term
   | LetBlo of variable * block * term
 
@@ -122,6 +123,8 @@ and fv_term (t : term) =
       fv_values (v :: vs)
   | Print (v1, t2) ->
       union (fv_value v1) (fv_term t2)
+  | Ifzero (tif, tthen, telse) ->
+      union (union (fv_value tif) (fv_term tthen)) (fv_term telse)
   | LetVal (x, v1, t2) ->
       union
         (fv_value v1)

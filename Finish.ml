@@ -217,6 +217,8 @@ let rec finish_term (t : S.term) : C.stmt =
         scall printf [ T.Literal "%d\\n"; to_int (finish_value v) ];
         finish_term t
       ]
+  | S.Ifzero (vif, telse, tthen) ->
+      T.IfElse(to_int (finish_value vif), finish_term tthen, finish_term telse)
   | S.LetVal (x, v1, t2) ->
       T.Compound [
         T.DeclStmt (declare x (Some (T.InitExpr (finish_value v1))));

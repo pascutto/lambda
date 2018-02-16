@@ -1,0 +1,3 @@
+let print_fun = fun a -> fun b -> print (print (a + b)) in
+let fonction = fun f -> fun x -> fun y -> (f y) x in
+fonction print_fun 13 7

@@ -29,6 +29,7 @@ and term_ =
   | Lit of int
   | BinOp of term * binop * term
   | Print of term
+  | Ifzero of term * term * term
   | Let of recursive * variable * term * term
 
 (* Every abstract syntax tree node of type [term] is annotated with a place,

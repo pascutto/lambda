@@ -38,6 +38,7 @@ and term =
   | Exit
   | TailCall of variable * value list
   | Print of value * term
+  | Ifzero of value * term * term
   | LetVal of variable * value * term
   | LetBlo of variable * block * term
   | Swi of value * branch list

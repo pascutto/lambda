@@ -43,6 +43,7 @@ and term =
   | Lit of int
   | BinOp of term * binop * term
   | Print of term
+  | Ifzero of term * term * term
   | Let of variable * term * term
 
 [@@deriving show { with_path = false }]

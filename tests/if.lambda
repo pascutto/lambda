@@ -1,0 +1,3 @@
+let f = fun x -> ifzero x then x else 42 in
+let a = print(f 4) in
+print(f 0)
